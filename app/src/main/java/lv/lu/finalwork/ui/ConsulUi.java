@@ -8,10 +8,20 @@ import java.util.Scanner;
 
 public class ConsulUi {
 
-    private ProductService productService = new ProductService();
+    private ProductService productService;
+
+    public ConsulUi(ProductService productService, Scanner scanner) {
+        this.productService = productService;
+        this.scanner = scanner;
+    }
+
+    private Scanner scanner;
+
+    public ConsulUi(ProductService productService) {
+        this.productService = productService;
+    }
 
     public void run() {
-        Scanner scanner = new Scanner(System.in);
         int userChoice;
         while (true) {
 

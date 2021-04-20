@@ -13,7 +13,12 @@ import java.util.List;
 
 public class ProductService {
 
-    private ProductRepository repository = new ProductRepository(new HashMap<>());
+    private final ProductRepository repository;
+
+
+    public ProductService(ProductRepository repository) {
+        this.repository = repository;
+    }
 
     public void save(ProductInputData productInputData) {
         Product product = convertFrom(productInputData);
