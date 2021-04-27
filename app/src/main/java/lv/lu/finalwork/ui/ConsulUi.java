@@ -3,22 +3,22 @@ package lv.lu.finalwork.ui;
 
 import lv.lu.finalwork.model.ProductInputData;
 import lv.lu.finalwork.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
+@Controller
 public class ConsulUi {
 
-    private ProductService productService;
+    private final ProductService productService;
+    private final Scanner scanner;
 
+    @Autowired
     public ConsulUi(ProductService productService, Scanner scanner) {
         this.productService = productService;
         this.scanner = scanner;
-    }
-
-    private Scanner scanner;
-
-    public ConsulUi(ProductService productService) {
-        this.productService = productService;
     }
 
     public void run() {
@@ -31,13 +31,13 @@ public class ConsulUi {
             if (userChoice == 1) {
                 ProductInputData productInputData = new ProductInputData();
 
-                System.out.println("Enter product name : ");
+                System.out.println("Enter product name: ");
                 productInputData.setName(scanner.next());
 
-                System.out.println("Enter product price : ");
+                System.out.println("Enter product price: ");
                 productInputData.setPrice(scanner.nextDouble());
 
-                System.out.println("Enter product category");
+                System.out.println("Enter product category: ");
                 productInputData.setCategory(scanner.next());
 
                 productService.save(productInputData);
@@ -45,6 +45,7 @@ public class ConsulUi {
                 productService.findAll().stream()
                         .forEach(System.out::println);
             }
+
             if (userChoice == 0) {
                 break;
             }

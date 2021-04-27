@@ -12,12 +12,10 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-
 public class ProductServiceTest {
 
     @InjectMocks
@@ -27,7 +25,7 @@ public class ProductServiceTest {
     private ProductRepository repositoryMock;
 
     @Test
-    public void shouldConvertAndStoreProductData() {
+    public void shouldCovertAndStoreProductData() {
         ProductInputData inputData = new ProductInputData();
         inputData.setName("orange");
         inputData.setPrice(0.84);
@@ -45,6 +43,5 @@ public class ProductServiceTest {
         expectedProduct.setDescription("Very tasty fruit");
 
         verify(repositoryMock).save(expectedProduct);
-
     }
 }

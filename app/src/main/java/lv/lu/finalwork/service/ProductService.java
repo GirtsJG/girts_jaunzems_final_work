@@ -5,17 +5,20 @@ import lv.lu.finalwork.model.ProductCategory;
 import lv.lu.finalwork.model.ProductData;
 import lv.lu.finalwork.model.ProductInputData;
 import lv.lu.finalwork.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
+@Service
 public class ProductService {
 
     private final ProductRepository repository;
 
-
+    @Autowired
     public ProductService(ProductRepository repository) {
         this.repository = repository;
     }
@@ -46,7 +49,7 @@ public class ProductService {
         product.setPrice(BigDecimal.valueOf(productInputData.getPrice()));
         product.setCategory(ProductCategory.valueOf(productInputData.getCategory()));
         if (productInputData.getDiscount() != null) {
-            product.setDiscount((BigDecimal.valueOf(productInputData.getDiscount())));
+            product.setDiscount(BigDecimal.valueOf(productInputData.getDiscount()));
         }
         if (productInputData.getDescription() != null) {
             product.setDescription(productInputData.getDescription());
